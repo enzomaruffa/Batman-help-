@@ -69,11 +69,13 @@ struct ContentView: View {
                             .resizable()
                             .frame(width: 80, height: 80, alignment: .center)
                             .animation(.easeInOut)
+                            .rotationEffect(Angle(degrees: self.menuOpen ? 180 : 0))
                     }
                 }
                 
                 Button(action: {
-                    print("cebolinhaaa")
+                    print("cebolinhaaa`")
+                    print("oi? \(CharacterSingleton.shared.characters.count)")
                     withAnimation(.easeInOut(duration: 0.8)) {
                         self.menuOpen.toggle()
                     }
@@ -81,6 +83,7 @@ struct ContentView: View {
                     Image("BatmanButton")
                         .resizable()
                         .frame(width: 80, height: 80, alignment: .center)
+                        .rotationEffect(Angle(degrees: self.menuOpen ? 180 : 0))
                 }
             }
         }.navigationBarHidden(true)

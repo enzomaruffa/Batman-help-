@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Character: Identifiable {
+class Character: Identifiable, Equatable {
     
     var id: Int
     var type: CharacterType
@@ -22,6 +22,10 @@ class Character: Identifiable {
         self.name = name
         self.assetName = assetName
         self.occupation = occupation
+    }
+    
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        lhs.id == rhs.id
     }
     
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CharacterType {
-    case hero
-    case villain
+enum CharacterType: String, Hashable {
+    case hero = "Heroes"
+    case villain = "Villains"
 }

@@ -11,11 +11,23 @@ import SwiftUI
 struct CharactersListView: View {
     
     @State var characters: [Character] = CharacterSingleton.shared.characters
+    @State var currentFilter: Int = 1
+    
+    @State private var possibleStates: [CharacterType?] = [CharacterType.hero, nil, .villain]
     
     var body: some View {
-        
-        List(characters) { character in
-            CharacterRowView(character: character)
+        VStack(alignment: HorizontalAlignment.center) {
+            Picker(selection: $currentFilter, label: Text("Type")) {
+                ForEach(0 ..< possibleStates.count) {
+                    Text(self.possibleStates[$0]?.rawValue ?? "All")
+                }
+            }.pickerStyle(SegmentedPickerStyle())
+            
+            Spacer()
+            
+            List(characters.filter( { possibleStates[currentFilter] == nil ? true : ($0.type == possibleStates[currentFilter]) } )) { character in
+                CharacterRowView(character: character)
+            }
         }
     }
 }
