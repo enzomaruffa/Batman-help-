@@ -8,9 +8,12 @@
 
 import Foundation
 
-class CharacterSingleton {
+class CharacterSingleton: DatabaseAccess {
+    
     static var shared = CharacterSingleton()
+    
     var characters: [Character] = []
+    var sceneLocations: [SceneLocation] = []
     
     private init() {
         
@@ -24,7 +27,20 @@ class CharacterSingleton {
         character = Character(id: 4, type: .villain, name: "Two Faces", assetName: "two-faces", occupation: "Deputy")
         characters.append(character)
         
-        // Pull updated info from CloudKit
+    }
+    
+    func getAllCharacters() -> [Character] {
+        characters
+    }
+    
+    func getAllScenes() -> [SceneLocation] {
+        sceneLocations
+    }
+    
+    func addScene(scene: SceneLocation) {
+        sceneLocations.append(scene)
     }
     
 }
+
+

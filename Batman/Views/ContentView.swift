@@ -74,8 +74,6 @@ struct ContentView: View {
                 }
                 
                 Button(action: {
-                    print("cebolinhaaa`")
-                    print("oi? \(CharacterSingleton.shared.characters.count)")
                     withAnimation(.easeInOut(duration: 0.8)) {
                         self.menuOpen.toggle()
                     }
